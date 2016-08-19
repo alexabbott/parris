@@ -1,0 +1,1339 @@
+// variables
+$color-black: #000;
+$color-white: #fff;
+$color-red: #ff0000;
+$color-yellow: #FBFE0E;
+$color-pink: #FF22AC;
+
+$screen-xs: 360px !default;
+$screen-sm: 768px !default;
+$screen-md: 1025px !default;
+$screen-lg: 1280px !default;
+$screen-xl: 1920px !default;
+
+$font-family: 'archivo', Futura, Arial, sans-serif;
+
+// extends
+%transition {
+  transition: 0.5s ease-out;
+}
+
+* {
+	@extend %transition;
+	transition-property: opacity;
+}
+
+// mixins
+@mixin mobile {
+  @media screen and (min-width: #{$screen-xs}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+@mixin monitor {
+  @media screen and (min-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+@mixin display {
+  @media screen and (min-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+.mailchimp {
+	@include tablet {
+		left: 50%;
+		opacity: 0;
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+	}
+}
+
+
+html {
+	margin: 0;
+	overflow-x: hidden;
+	padding: 0;
+
+	@include tablet {
+		overflow-x: auto;
+	}
+
+	:focus {
+		outline: none;
+	}
+
+	body {
+		background-position: top center !important;
+		background-repeat: no-repeat !important;
+		color: $color-black;
+		font-family: $font-family;
+		height: auto !important;
+		margin: 0;
+		overflow-x: hidden;
+		padding: 0;
+		position: relative;
+		width: 100vw;
+
+		@include tablet {
+			height: 100vh !important;;
+			overflow-x: auto;
+		}
+
+		&.home {
+			background-size: cover !important;
+			overflow: hidden;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.hide {
+			opacity: 0 !important;
+		}
+
+		header {
+			.socials {
+				color: $color-white;
+				display: none;
+				position: absolute;
+				right: 40px;
+				top: 30px;
+				z-index: 4;
+
+				@include tablet {
+					display: block;
+				}
+
+				i {
+					@extend %transition;
+					color: $color-white;
+					cursor: pointer;
+					font-size: 24px;
+					margin-left: 8px;
+					transition-property: color;
+
+					&:hover {
+						color: $color-yellow;
+					}
+				}
+			}
+		}
+
+		.nav-title {
+			border-bottom: 1px solid $color-white;
+			color: $color-white;
+			cursor: pointer;
+			font-size: 18px;
+		  margin-bottom: 0;
+		  padding-bottom: 20px;
+		  position: relative;
+			text-align: center;
+			z-index: 2;
+
+			@include tablet {
+				display: none;
+			}
+
+			span {
+    		display: inline-block;
+    		margin-top: -7px;
+				vertical-align: top;
+			}
+		}
+		nav {
+			@extend %transition;
+			height: 73vh;
+			overflow: scroll;
+			padding-top: 50px;
+			position: absolute;
+			transform: translate3d(0, -200vh, 0);
+			-webkit-transform: translate3d(0, -200vh, 0);
+			-moz-transform: translate3d(0, -200vh, 0);
+			transition-property: transform;
+			width: 100%;
+		  -webkit-overflow-scrolling: touch;
+
+			&.show {
+				transform: translate3d(0, 0, 0);
+				-webkit-transform: translate3d(0, 0, 0);
+				-moz-transform: translate3d(0, 0, 0);
+				z-index: 10;
+			}
+
+			@include tablet {
+				height: 100vh;
+				overflow-x: hidden;
+		    padding-top: 0;
+		    transform: translate3d(0, 0, 0);
+		    -webkit-transform: translate3d(0, 0, 0);
+		    -moz-transform: translate3d(0, 0, 0);
+		    width: 100vw;
+		    z-index: 1;
+			}
+
+			.home {
+		    display: block;
+    		margin-bottom: 70px;
+		    text-align: center;
+		    width: 100%;
+
+				@include tablet {
+					left: 40px;
+					margin: 0;
+					position: absolute;
+					top: 40px;
+					width: auto;
+				}
+
+				img {
+					width: 125px;
+
+					@include tablet {
+						width: 85px;
+					}
+				}
+			}
+
+			.left,
+			.right {
+				text-align: center;
+
+				@include tablet {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					-webkit-transform: translateY(-50%);
+					-moz-transform: translateY(-50%);
+				}
+
+				a {
+					display: block;
+					margin-bottom: 90px;
+
+					@include tablet {
+						margin-bottom: 70px;
+					}
+
+					&.music {
+						img {
+							width: 150px;
+
+							@include tablet {
+								margin-bottom: 40px;
+								margin-top: 20px;
+								width: 150px;
+							}
+						}
+					}
+					&.videos {
+						img {
+							width: 160px;
+
+							@include tablet {
+								margin-top: -20px;
+								width: 140px;
+							}
+						}
+					}
+					&.photos {
+						img {
+							width: 170px;
+
+							@include tablet {
+								width: 145px;
+							}
+						}
+					}
+					&.tour {
+						img {
+							width: 170px;
+
+							@include tablet {
+								width: 140px;
+							}
+						}
+					}
+					&.shop {
+						img {
+							width: 160px;
+
+							@include tablet {
+								width: 125px;
+							}
+						}
+					}
+					&.mail {
+						img {
+							width: 150px;
+
+							@include tablet {
+								width: 125px;
+							}
+						}
+					}
+
+					img {
+						cursor: pointer;
+					}
+				}
+			}
+			.left {
+				left: 30px;
+			}
+			.right {
+				right: 30px;
+			}
+			.subscribe {
+				text-align: center;
+
+				@include tablet {
+					bottom: 40px;
+					position: absolute;
+					right: 40px;
+				}
+
+				a {
+					img {
+						cursor: pointer;
+						width: 120px;
+
+						@include tablet {
+							width: 120px;
+						}
+					}
+				}
+			}
+			#mc_embed_signup {
+				clear:left;
+				font-size: 14px;
+				margin-top: -100px;
+				opacity: 0;
+				pointer-events: none;
+				transform: translateY(-100px);
+				-webkit-transform: translateY(-100px);
+				-moz-transform: translateY(-100px);
+				transition: opacity 0.2s, transform 0.2s;
+
+				#mc-embedded-subscribe-form div.mce_inline_error {
+					display: none !important;
+				}
+
+				@include tablet {
+					margin-top: 0;
+					transform: translateX(300px);
+					-webkit-transform: translateX(300px);
+					-moz-transform: translateX(300px);
+				}
+				@include tablet {
+					.mc-field-group {
+						display: inline-block;
+						margin-top: -42px;
+						width: 195px;
+
+						input {
+    	    		margin-top: 0;
+    	    		text-align: left;
+						}
+					}
+					.clear {
+						display: inline-block;
+					  margin-left: 9px;
+					  margin-top: -28px;
+						text-align: left;
+					  vertical-align: top;
+					}
+					#mc_embed_signup_scroll {
+    				margin-top: -20px;
+    				padding: 0;
+						width: 332px;
+					}
+				}
+			}
+			#mc_embed_signup.opened {
+				margin-top: 0;
+				opacity: 1;
+				pointer-events: initial;
+				transform: translateY(0px);
+				-webkit-transform: translateY(0px);
+				-moz-transform: translateY(0px);
+
+				@include tablet {
+					transform: translateX(-400px);
+					-webkit-transform: translateX(-400px);
+					-moz-transform: translateX(-400px);
+				}
+
+			}
+			form .mc-field-group input {
+		    border: 0;
+		    border-radius: 10px;
+		    color: #000;
+		    font-family: 'archivo', Futura, Arial, sans-serif;
+				font-size: 14px;
+				margin-top: 50px;
+		    padding: 10px;
+		    text-align: center;
+			}
+			form .clear {
+				text-align: center;
+			}
+			form .clear input {
+				border: 1px solid $color-yellow;
+				color: $color-yellow;
+				margin: 15px auto;
+				text-align: center;
+			}
+			#mc_embed_signup_scroll {
+				padding: 0 25px;
+			}
+			form .mce-error-response {
+				color: #ff0000;
+				display: none;
+			}
+			form .mce_inline_error:not(.required) {
+				color: #ff0000;
+				font-size: 10px;
+				margin-top: 5px;
+			}
+		}
+		.site-content {
+			position: static;
+			top: 0;
+
+			@include tablet {
+				position: static;
+			}
+
+			#primary {
+				display: table;
+				height: 90vh;
+				width: 100vw;
+			
+				main {
+					display: table-cell;
+					text-align: center;
+					position: relative;
+					vertical-align: middle;
+					width: 100vw;
+
+					.main-logo {
+						@extend %transition;
+						margin-top: -100px;
+						max-width: 850px;
+						transition-property: opacity;
+						width: 90%;
+
+						@include tablet {
+							margin-top: 40px;
+							width: 65%;
+						}
+					}
+
+					.page-label {
+						bottom: 165px;
+						color: $color-white;
+						display: none;
+						font-size: 14px;
+						left: 15px;
+						margin: 0;
+						position: fixed;
+						transform: rotate(270deg) translateX(-20px);
+						-webkit-transform: rotate(270deg) translateX(-20px);
+						-moz-transform: rotate(270deg) translateX(-20px);
+
+						@include tablet {
+							display: block;
+						}
+					}
+					.page-title {
+						@extend %transition;
+						display: block;
+						margin: 0 auto;
+						transition-property: opacity;
+						width: 150px;
+					}
+				}
+			}
+		}
+		footer {
+			@extend %transition;
+			color: $color-white;
+	    font-size: 10px;
+	    margin-bottom: 20px;
+	    position: relative;
+			text-align: center;
+	    transition-property: opacity;
+	    width: 100%;
+	    z-index: 2;
+
+			@include tablet {
+				bottom: 70px;
+				font-size: 10px;
+				margin-bottom: 5px;
+		    margin-left: 32px;
+				margin-top: 20px;
+				position: fixed;
+		    text-align: left;
+				transform: translateY(70px);
+				-webkit-transform: translateY(70px);
+				-moz-transform: translateY(70px);
+			}
+
+	    a {
+	    	color: $color-white;
+	    	text-decoration: none;
+
+	    	span {
+	    		color: $color-yellow;
+	    	}
+	    }
+
+	    .mobile-only {
+	    	display: block;
+
+	    	@include tablet {
+	    		display: none;
+	    	}
+	    }
+
+	    .subscribe {
+	    	height: 145px;
+				text-align: center;
+
+				&.opened {
+					height: 335px;
+				}
+
+				@include tablet {
+					bottom: 40px;
+					position: absolute;
+					right: 40px;
+				}
+
+				a {
+					img {
+						cursor: pointer;
+						width: 140px;
+
+						@include tablet {
+							width: 120px;
+						}
+					}
+				}
+			}
+			#mc_embed_signup {
+				clear:left;
+				font-size: 14px;
+				margin-top: -100px;
+				opacity: 0;
+				pointer-events: none;
+				transform: translateY(-100px);
+				-webkit-transform: translateY(-100px);
+				-moz-transform: translateY(-100px);
+				transition: opacity 0.2s, transform 0.2s;
+
+				#mc-embedded-subscribe-form div.mce_inline_error {
+					display: none !important;
+				}
+
+				@include tablet {
+					margin-top: 0;
+					transform: translateX(300px);
+					-webkit-transform: translateX(300px);
+					-moz-transform: translateX(300px);
+				}
+				@include tablet {
+					.mc-field-group {
+						display: inline-block;
+						margin-top: -42px;
+						width: 195px;
+
+						input {
+    	    		margin-top: 0;
+    	    		text-align: left;
+						}
+					}
+					.clear {
+						display: inline-block;
+					  margin-left: 9px;
+					  margin-top: -28px;
+						text-align: left;
+					  vertical-align: top;
+					}
+					#mc_embed_signup_scroll {
+    				margin-top: -20px;
+    				padding: 0;
+						width: 332px;
+					}
+				}
+			}
+			#mc_embed_signup.opened {
+				margin-top: 0;
+				opacity: 1;
+				pointer-events: initial;
+				transform: translateY(0px);
+				-webkit-transform: translateY(0px);
+				-moz-transform: translateY(0px);
+
+				@include tablet {
+					transform: translateX(-400px);
+					-webkit-transform: translateX(-400px);
+					-moz-transform: translateX(-400px);
+				}
+
+			}
+			form .mc-field-group input {
+		    border: 0;
+		    border-radius: 10px;
+		    color: #000;
+		    font-family: 'archivo', Futura, Arial, sans-serif;
+				font-size: 14px;
+				margin-top: 50px;
+		    padding: 10px;
+		    text-align: center;
+			}
+			form .clear {
+				text-align: center;
+			}
+			form .clear input {
+				border: 1px solid $color-yellow;
+				color: $color-yellow;
+				margin: 15px auto;
+				text-align: center;
+			}
+			#mc_embed_signup_scroll {
+				margin-top: -20px;
+				padding: 0 25px;
+			}
+			form .mce-error-response {
+				color: #ff0000;
+				display: none;
+			}
+			form .mce_inline_error:not(.required) {
+				color: #ff0000;
+				font-size: 10px;
+				margin-top: 5px;
+			}
+		}
+	}
+	.socials.mobile-only {
+		display: block;
+		text-align: center;
+
+		a {
+			color: $color-white;
+			font-size: 28px;
+			margin: 0 7px;
+		}
+
+		@include tablet {
+			display: none;
+		}
+	}
+}
+
+.home {
+	footer,
+	.socials.mobile-only {
+		color: $color-white;
+		margin-top: -30px;
+	}
+
+	.socials.mobile-only {
+		transform: translateY(-45px);
+		-webkit-transform: translateY(-45px);
+		-moz-transform: translateY(-45px);
+	}
+
+	footer .subscribe {
+		display: none;
+	}
+
+	@include tablet {
+		footer,
+		.socials {
+			color: $color-white;
+			margin-top: 0;
+		}
+		footer .site-info {
+			margin-top: -5px;
+		}
+	}
+}
+
+// videos page
+.page-template-videos {
+	background-size: fill !important;
+	overflow-x: hidden;
+
+	@include tablet {
+		background-size: cover !important;
+	}
+	main {
+		&.all {
+			padding-top: 40px;
+
+			@include tablet {
+				display: block !important;
+				max-height: 100vh;
+				padding-top: 0;
+				overflow: scroll;
+
+				&::webkit-scrollbar {
+					width: 0 !important;
+				}
+			}
+		}
+	}
+	.page-title {
+		margin-top: 50px !important;
+	}
+	.filters {
+		position: relative;
+		z-index: 5;
+
+		.filter {
+			color: $color-yellow;
+			cursor: pointer;
+			display: inline-block;
+	    margin: 0 20px;
+	    transform: translateY(28px);
+	    -webkit-transform: translateY(28px);
+	    -moz-transform: translateY(28px);
+			transition: color 0.2s ease-out;
+
+			&:hover,
+			&.selected {
+				color: $color-white;
+			}
+		}
+	}
+	.videos-container {
+		display: table;
+    margin:  40px auto 0 auto;
+    max-width: 840px;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+
+    @include tablet {
+    	width: 60%;
+    }
+
+    &.expanded {
+	    height: 450px;
+	    margin-bottom: 20px;
+	    overflow: scroll;
+
+	 		&::-webkit-scrollbar { 
+	 			width: 0 !important;
+	 		}
+    }
+
+    .video-numbers {
+    	color: $color-white;
+    	cursor: pointer;
+    	display: none;
+    	font-size: 12px;
+    	margin-left: -10px;
+    	vertical-align: middle;
+    	width: 8%;
+
+    	&.invisible {
+    		visibility: hidden;
+    	}
+
+    	@include tablet {
+    		display: table-cell;
+    	}
+
+    	.video-number {
+    		@extend %transition;
+    		transition-property: color;
+
+    		&:hover {
+    			color: $color-yellow;
+    		}
+    	}
+    }
+    .video {
+    	display: inline-block;
+    	margin: 0 auto;
+    	width: 100%;
+
+    	@include tablet {
+    		margin: 0 0 20px -105px;
+    		width: 90%;
+    	}
+
+			.video-title {
+				color: $color-yellow;
+				display: block;
+				padding: 5px 10px 15px 10px;
+				text-align: left;
+				vertical-align: top;
+				width: 100%;
+
+		  	@include tablet {
+		  		display: inline-block;
+		  		padding: 0;
+		  	}
+		  	@include desktop {
+		  		margin: 0 0 0 45px;
+		  	}
+			}
+			.video-player {
+				background-size: cover !important;
+				display: inline-block;
+				height: 50vw;
+    		max-height: 360px;
+				max-width: 640px;
+    		position: relative;
+    		width: 95%;
+
+    		@include tablet {
+    			height: 360px;
+    			transform: translateX(15px);
+    			-webkit-transform: translateX(15px);
+    			-moz-transform: translateX(15px);
+					width: 640px;
+    		}
+
+				iframe {
+					height: 100%;
+					width: 100%;
+				}
+			}
+			.video-cover {
+				height: 100%;
+				left: 0;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+			.play-button {
+				cursor: pointer;
+				height: 100px;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				-webkit-transform: translate(-50%,-50%);
+				-moz-transform: translate(-50%,-50%);
+				width: 100px;
+			}
+    }
+	}
+	.share {
+		background: $color-white;
+		border: 4px solid $color-black;
+    box-shadow: 5px 5px 0px $color-black;
+    color: $color-pink;
+    margin: 0 auto 40px auto;
+		padding: 5px 10px;
+		position: relative;
+		width: 80px;
+		z-index: 3;
+
+		@include tablet {
+			margin: 0 auto;
+			transform: translateX(16px);
+			-webkit-transform: translateX(16px);
+			-moz-transform: translateX(16px);
+
+			&.space {
+				margin: 0 auto 20px auto;
+			}
+		}
+
+		i {
+			@extend %transition;
+			color: $color-pink;
+			margin: 0 10px;
+			transition: color 0.2s ease-out;
+
+			&:hover {
+				color: $color-black;
+			}
+		}
+		.share-overlay {
+			background: $color-pink;
+    	box-sizing: border-box;
+    	color: $color-yellow;
+    	display: none;
+			height: 100%;
+			left: 0;
+			opacity: 1;
+			padding-top: 5px;
+			position: absolute;
+			text-align: center;
+			top: 0;
+			width: 100%;
+
+			@include tablet {
+				display: block;
+			}
+		}
+		&:hover {
+			.share-overlay {
+				opacity: 0;
+				pointer-events: none;
+			}
+		}
+	}
+	.controls {
+		display: inline-block;
+		position: relative;
+		width: auto;
+		z-index: 3;
+
+		.next-prev {
+			.next,
+			.prev {
+				@extend %transition;
+				color: $color-yellow;
+				cursor: pointer;
+				display: inline-block;
+				margin: 0 20px;
+	  		transition-property: color;
+
+	  		@include tablet {
+	  			display: inline-block;
+	  		}
+
+	  		&:hover {
+	  			color: $color-white;
+	  		}
+			}
+		}
+		.view-all {
+			@extend %transition;
+			color: $color-yellow;
+			cursor: pointer;
+			font-size: 12px;
+			transition-property: color;
+
+  		&:hover {
+  			color: $color-white;
+  		}
+		}
+	}
+}
+
+// music page
+.page-template-music {
+	background-size: fill !important;
+	height: 125vh;
+	overflow-x: hidden;
+
+	@include tablet {
+		background-size: cover !important;
+		height: 100vh;
+	}
+
+	.page-title {
+		
+		margin-top: 40px !important;
+
+		@include tablet {
+			margin-top: 55px !important;
+		}
+	}
+	.songs-container {
+		display: table;
+    margin:  25px auto 0 auto;
+    max-width: 600px;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+
+    @include tablet {
+    	width: 60%;
+    }
+
+    &.expanded {
+    	@include tablet {
+		  	transform: translateX(24px);
+		  	-webkit-transform: translateX(24px);
+		  	-moz-transform: translateX(24px);
+		  }
+
+		  .song {
+		  	margin-bottom: 20px;
+		  }
+    }
+
+    .song-numbers {
+    	color: $color-white;
+    	cursor: pointer;
+    	display: none;
+    	font-size: 12px;
+    	margin-left: -10px;
+    	vertical-align: middle;
+    	width: 8%;
+
+    	@include tablet {
+    		display: table-cell;
+    	}
+
+    	@include desktop {
+    		transform: translateX(20px);
+    		-webkit-transform: translateX(20px);
+    		-moz-transform: translateX(20px);
+    	}
+
+    	.song-number {
+    		@extend %transition;
+    		transition-property: color;
+
+    		&:hover {
+    			color: $color-yellow;
+    		}
+    	}
+    }
+    .song {
+    	display: inline-block;
+    	margin: 0 auto;
+    	max-width: 300px;
+    	width: 100%;
+
+    	@include tablet {
+    		margin: 0 0 0 -70px;
+    		max-width: 400px;
+    		width: auto;
+    	}
+
+			.song-image {
+				width: 100%;
+
+				img {
+					max-width: 300px;
+
+					@include tablet {
+						max-width: 400px;
+					}
+				}
+			}
+			.song-player {
+				background-size: cover !important;
+				display: inline-block;
+				margin-bottom: 20px;
+    		max-height: 100px;
+				max-width: 270px;
+    		position: relative;
+
+    		@include tablet {
+    			height: 100px;
+    			max-width: 400px;
+					width: 400px;
+    		}
+
+				iframe {
+					border: none;
+					height: 95px;
+					margin: 0;
+					transform: translateX(-15px);
+					-webkit-transform: translateX(-15px);
+					-moz-transform: translateX(-15px);
+					width: 300px;
+
+					@include tablet {
+						height: 100%;
+						transform: translateX(0);
+						width: 400px;
+					}
+				}
+			}
+    }
+	}
+	.share {
+		background: $color-white;
+		border: 4px solid $color-black;
+    box-shadow: 5px 5px 0px $color-black;
+    color: $color-pink;
+    display: inline-block;
+    margin: 30px auto 20px auto;
+		padding: 5px 10px;
+		position: relative;
+		width: 80px;
+		z-index: 3;
+
+		@include tablet {
+			margin: 0 auto;
+    	margin-left: -20px;
+			// margin-right: 40px;
+		}
+
+		i {
+			@extend %transition;
+			color: $color-pink;
+			margin: 0 10px;
+			transition: color 0.2s ease-out;
+
+			&:hover {
+				color: $color-black;
+			}
+		}
+		.share-overlay {
+			background: $color-pink;
+    	box-sizing: border-box;
+    	color: $color-yellow;
+    	display: none;
+			height: 100%;
+			left: 0;
+			opacity: 1;
+			padding-top: 5px;
+			position: absolute;
+			text-align: center;
+			top: 0;
+			width: 100%;
+
+			@include tablet {
+				display: block;
+			}
+		}
+		&:hover {
+			.share-overlay {
+				opacity: 0;
+				pointer-events: none;
+			}
+		}
+	}
+	.buy {
+		background: $color-pink;
+		border: 4px solid $color-black;
+    box-shadow: 5px 5px 0px $color-black;
+    color: $color-yellow;
+    display: inline-block;
+    margin: 30px auto 20px auto;
+		padding: 5px 10px;
+		position: relative;
+		text-align: center;
+		transition: background 0.2s ease-out, color 0.2s ease-out;
+		width: 80px;
+		z-index: 3;
+
+		@include tablet {
+			margin: 0 auto;
+		}
+
+		&:hover {
+			background: $color-white;
+			color: $color-pink;
+		}
+	}
+	.controls {
+		display: inline-block;
+		position: relative;
+		width: auto;
+		z-index: 3;
+
+		.next-prev {
+			margin-top: 20px;
+
+			@include tablet {
+				transform: translateX(-20px);
+				-webkit-transform: translateX(-20px);
+				-moz-transform: translateX(-20px);
+			}
+			.next,
+			.prev {
+				@extend %transition;
+				color: $color-yellow;
+				cursor: pointer;
+				display: inline-block;
+				margin: 0 20px;
+	  		transition-property: color;
+
+	  		@include tablet {
+	  			display: inline-block;
+	  		}
+
+	  		&:hover {
+	  			color: $color-white;
+	  		}
+			}
+		}
+		.view-all {
+			@extend %transition;
+			color: $color-yellow;
+			cursor: pointer;
+			font-size: 12px;
+			transition-property: color;
+
+			@include tablet {
+				transform: translateX(-20px);
+				-webkit-transform: translateX(-20px);
+				-moz-transform: translateX(-20px);
+			}
+
+  		&:hover {
+  			color: $color-white;
+  		}
+		}
+	}
+}
+
+.page-template-tour {
+	background-size: cover !important;
+	overflow-x: hidden;
+
+	main {
+    padding-top: 80px;
+		vertical-align: top !important;
+
+		.page-title {
+			margin-top: -20px !important;
+
+			@include tablet {
+				margin-top: 0 !important;
+			}
+		}
+
+		.tour-dates {
+			color: $color-white;
+			margin: 30px auto;
+			max-width: 1000px;
+			text-align: left;
+			width: 100%;
+
+			@include tablet {
+				width: 50%
+			}
+			@include desktop {
+				width: 60%;
+			}
+
+			.tour-date {
+				box-sizing: border-box;
+				font-size: 0;
+				margin: 10px 0 25px 0;
+				padding: 0 20px;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+
+				div:nth-of-type(1) {
+					display:inline-block;
+					font-size: 10px;
+					vertical-align: top;
+					width: 20%;
+
+					@include desktop {
+						font-size: 11px;
+					}
+
+					@include desktop {
+						font-size: 14px;
+						vertical-align: middle;
+						width: 12%;
+					}
+				}
+				div:nth-of-type(2) {
+					display:inline-block;
+					font-size: 10px;
+					vertical-align: top;
+					width: 56%;
+
+					@include desktop {
+						font-size: 11px;
+					}
+
+					@include desktop {
+						font-size: 14px;
+						vertical-align: middle;
+						width: 19%;
+					}
+				}
+				div:nth-of-type(3) {
+					display: none;
+					font-size: 10px;
+					vertical-align: top;
+
+					@include desktop {
+						font-size: 11px;
+					}
+
+					@include desktop {
+						display: inline-block;
+						font-size: 14px;
+						vertical-align: middle;
+						width: 49%;
+					}
+				}
+				a {
+					background: transparent;
+					border: 3px solid $color-white;
+					box-sizing: border-box;
+					color: $color-white;
+					cursor: pointer;
+					display:inline-block;
+					font-size: 10px;
+					padding: 7px 5px;
+					text-align: center;
+					transition: background 0.3s ease-out, color 0.3s ease-out;
+					vertical-align: top;
+					width: 24%;
+
+					@include desktop {
+						font-size: 11px;
+					}
+
+					@include desktop {
+						font-size: 14px;
+						padding: 12px 0;
+						vertical-align: middle;
+						width: 19%
+					}
+				}
+				a:hover {
+					background: $color-pink;
+					color: $color-yellow;
+				}
+			}
+		}
+		.mobile-only {
+			display: inline-block;
+
+			@include desktop {
+				display: none;
+			}
+		}
+	}
+}
+
+.page-template-shop {
+	background-size: cover !important;
+
+	h2 {
+		color: $color-yellow;
+	}
+	.page-title {
+		left: 50%;
+		margin-left: -75px !important;
+		position: absolute;
+		top: 50px;
+	}
+}
